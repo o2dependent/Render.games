@@ -48,7 +48,7 @@ export default function TicTacToeHeader({ isGameWon, player }) {
         </ModalBackground>
       ) : null}
       {isGameWon ? (
-        <Header>Player{" " + player} has won!</Header>
+        <Header>{playerNames[Number(player) - 1]} has won!</Header>
       ) : (
         <Header>
           {`${playerNames[Number(player) - 1]}'s turn  `}
