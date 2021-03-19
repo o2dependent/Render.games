@@ -1,10 +1,8 @@
 import * as React from "react"
-import { Link } from "gatsby"
 
 import SEO from "../components/seo"
 import styled from "styled-components"
 import GameCard from "../components/GameCard"
-import NavProtector from "../components/navProtector"
 import mixins from "../helpers/mixins"
 
 const IndexPage = () => (

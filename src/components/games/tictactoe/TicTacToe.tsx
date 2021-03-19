@@ -1,10 +1,15 @@
 import { motion } from "framer-motion"
 import React, { useState } from "react"
 import styled from "styled-components"
+import useSound from "use-sound"
 import TicTacToeHeader from "./TicTacToeHeader"
+// @ts-ignore
+import clickPop from "../../../sounds/clickPop.wav"
 
 export default function TicTacToe() {
-  // --- state ---
+  // useSound
+  const [playPop] = useSound(clickPop, { volume: 1 })
+  // state
   // * tic tac toe board *
   const [board, setBoard] = useState(Array(9).fill(null))
   // * current player turn *
@@ -117,8 +122,12 @@ export default function TicTacToe() {
               stiffness: 200,
             }}
             key={`${tile}${idx}`}
-            onClick={() => handleTileClick(idx)}
+            onClick={() => {
+              handleTileClick(idx)
+              playPop()
+            }}
             tile={tile}
+            disabled={isGameWon || tile}
           />
         ))}
       </Board>
@@ -179,7 +188,7 @@ const Board = styled.div`
   }
 `
 
-const Tile = styled(motion.div)<{ tile: string }>`
+const Tile = styled(motion.button)<{ tile: string }>`
   width: 100%;
   padding-bottom: 100%;
   position: relative;

@@ -65,7 +65,7 @@ const HeaderContainer = styled.div`
   margin-top: 25px;
 `
 
-const EditSpan = styled(motion.span)`
+const EditSpan = styled(motion.button)`
   font-size: 32px;
   &:hover {
     cursor: pointer;
@@ -83,7 +83,7 @@ const ModalBackground = styled(motion.div)`
   left: 0;
   height: 100%;
   width: 100%;
-  z-index: 99;
+  z-index: 9999;
   background-color: #00000080;
 `
 
@@ -96,9 +96,10 @@ const Modal = styled.div`
   width: 95%;
   max-width: 500px;
   border-radius: 10px;
-  padding: 2% 5%;
+  padding: 1rem;
   background-color: white;
   color: black;
+  font-size: 1.5rem;
   h3 {
     width: fit-content;
     margin: 0 auto;
@@ -113,6 +114,7 @@ const NameInput = styled.input`
   margin-bottom: 15px;
   border-radius: 10px;
   background-color: #00000020;
+  font-size: 1.15rem;
 `
 
 const NameButton = styled.button`
@@ -120,8 +122,9 @@ const NameButton = styled.button`
   height: 50px;
   border-radius: 10px;
   border: none;
+  font-size: 1.15rem;
   &&& {
-    color: black;
+    color: white;
   }
-  background-color: var(--green);
+  background-color: var(--red);
 `

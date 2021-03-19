@@ -5,22 +5,42 @@ import SEO from "../../components/seo"
 import styled from "styled-components"
 import GameCard from "../../components/GameCard"
 import mixins from "../../helpers/mixins"
+import { graphql } from "gatsby"
 
-const IndexPage = () => (
-  <>
-    <SEO title="Home" />
-    <Grid>
-      {[
-        { title: "Tic Tac Toe", to: "tic-tac-toe" },
-        { title: "Tic Tac Toe", to: "tic-tac-toe" },
-        { title: "Tic Tac Toe", to: "tic-tac-toe" },
-        { title: "Tic Tac Toe", to: "tic-tac-toe" },
-      ].map(game => (
-        <GameCard to={game.to} title={game.title} />
-      ))}
-    </Grid>
-  </>
-)
+export const query = graphql`
+  query GamesInfo {
+    allMdx {
+      edges {
+        node {
+          frontmatter {
+            photo
+            title
+          }
+          slug
+        }
+      }
+    }
+  }
+`
+
+const IndexPage = ({
+  data: {
+    allMdx: { edges },
+  },
+}) => {
+  const games = edges.map(e => e.node)
+  console.log(games)
+  return (
+    <>
+      <SEO title="Home" />
+      <Grid>
+        {games.map(game => (
+          <GameCard to={game.slug} title={game.frontmatter.title} />
+        ))}
+      </Grid>
+    </>
+  )
+}
 
 export default IndexPage
 

@@ -1,7 +1,9 @@
 import React, { useEffect } from "react"
 import styled from "styled-components"
 import useSound from "use-sound"
+// @ts-ignore
 import darkPop from "../../sounds/darkPop.wav"
+// @ts-ignore
 import lightPop from "../../sounds/lightPop.wav"
 import DesktopNav from "./DesktopNav"
 import MobileNav from "./MobileNav"
@@ -11,7 +13,6 @@ const Header = () => {
   // useSound
   const [playDark] = useSound(darkPop, { volume: 0.25 })
   const [playLight] = useSound(lightPop, { volume: 0.25 })
-
   // check for dark mode
   useEffect(() => {
     if (
@@ -34,11 +35,10 @@ const Header = () => {
       playDark()
     }
   }
-
   return (
     <HeaderContainer>
       {/* --- desktop --- */}
-      <DesktopNav toggleDarkMode={toggleDarkMode} />
+      <DesktopNav />
       {/* --- mobile --- */}
       <MobileNav toggleDarkMode={toggleDarkMode} />
     </HeaderContainer>
@@ -57,5 +57,9 @@ const HeaderContainer = styled.header`
   @media screen and (min-width: 768px) {
     background-color: white;
     box-shadow: 0px 2px 5px #00000030;
+    @supports (backdrop-filter: blur(10px)) {
+      backdrop-filter: blur(10px);
+      background-color: #ffffff60;
+    }
   }
 `

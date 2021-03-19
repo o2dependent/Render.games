@@ -11,10 +11,10 @@ export default function GameCard({ to, title }: { to: string; title: string }) {
       whileTap={{ scale: 0.95 }}
       to={`/games/${to}`}
     >
-      <Card.Img
+      {/* <Card.Img
         src="https://images.unsplash.com/photo-1615996923925-bfe3ab919361?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80"
         alt={`${title} image`}
-      />
+      /> */}
       <Card.Title>{title}</Card.Title>
     </Card.Body>
   )
